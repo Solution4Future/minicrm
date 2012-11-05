@@ -2,9 +2,10 @@ Ext.define("minicrm.view.CustomerEdit", {
     extend: 'Ext.form.Panel',
     xtype: 'customer-edit',
     requires: [
-        'Ext.TitleBar', 
+        'Ext.TitleBar', 'Ext.form.FieldSet',
     ],
     config: {
+        id: 'customer-edit-form',
         fullscreen: true,
         modal: true,
         hideOnMaskTap: true,
@@ -48,7 +49,8 @@ Ext.define("minicrm.view.CustomerEdit", {
                         autoCapitalize: true,
                         required: true,
                         clearIcon: true,
-                        placeHolder: 'enter name'
+                        placeHolder: 'enter name',
+                        id: 'customereditname'
                     },
                     {
                         xtype: 'textfield',
@@ -56,7 +58,8 @@ Ext.define("minicrm.view.CustomerEdit", {
                         label: 'Address',
                         required: true,
                         clearIcon: true,
-                        placeHolder: 'enter address'
+                        placeHolder: 'enter address',
+                        id: 'customereditaddress'
                     }                                    
                 ]
             }
@@ -66,25 +69,8 @@ Ext.define("minicrm.view.CustomerEdit", {
     },
     
     updateRecord: function(rec) {
-        console.log(rec);
-        console.log(rec.blah());
-        //console.log(rec.actions());
         if (rec) {
-            this.down('#customer-info-panel').setData(rec.data);
-            var actionlist = this.down('#actions');
-            var actionstore = Ext.create('Ext.data.Store', {
-                model: 'minicrm.model.Action',
-                proxy: {
-                    type: 'rest',
-                    url: 'http://example-crm.herokuapp.com/clients/'+rec.data.id+'/actions',
-                    reader: {
-                        type: 'json',
-                        rootProperty: 'actions',
-                       }
-                }
-            });
-            actionstore.load();
-            actionlist.setStore(actionstore);
+            this.setValues(rec.data);
         }
     }
 

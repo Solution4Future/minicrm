@@ -10,7 +10,11 @@ Ext.define('minicrm.model.Customer', {
             reader: {
                 type: 'json',
                 rootProperty: 'clients',
-            }
+            },
+            noCache: false,
+            limitParam: false,
+            enablePagingParams: false,
+            startParam: false
         }
     },
     blah: function() { return 'blahstring'}

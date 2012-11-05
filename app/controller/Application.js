@@ -10,6 +10,8 @@ Ext.define('minicrm.controller.Application', {
             delcustomer: '#customer-del',
             editcustomer: '#customer-edit',
             addcustomer: '#customer-add',
+            customereditform: '#customer-edit-form',
+            customereditsave: '#customer-edit-ok'
         },
         
         control: {
@@ -30,7 +32,14 @@ Ext.define('minicrm.controller.Application', {
             },
             addcustomer: {
                 tap: 'onCustomerAdd'
+            },
+            customereditform: {
+                hide: 'onCustomerEditSave'
+            },
+            customereditsave: {
+                tap: 'onCustomerEditSave'
             }
+
         }
     },
     
@@ -70,7 +79,7 @@ Ext.define('minicrm.controller.Application', {
             Ext.Viewport.add(this.customerOverlay);
             
         }
-        //this.customerOverlay.setRecord(record);
+        this.customerOverlay.setRecord(this.showCustomer.getRecord());
         this.customerOverlay.show();
         
     },
@@ -82,7 +91,28 @@ Ext.define('minicrm.controller.Application', {
             Ext.Viewport.add(this.customerOverlay);
             
         }
-        //this.customerOverlay.setRecord(record);
         this.customerOverlay.show();
+    },
+    
+    onCustomerEditSave: function() {
+        console.log('save');
+        var w = this.customerOverlay ;
+        var record = w.getRecord();
+        if (record==null) {
+            console.log('new/add');
+            v = w.getValues();
+            var storec= Ext.data.StoreManager.lookup('Customers');
+            storec.add(v);
+            //storec.sync();
+        }
+        if (record!=null) {
+            console.log('edit');
+            w.setRecord(null);
+            //v = w.getValues();
+            //var storec= Ext.data.StoreManager.lookup('Customers');
+            //storec.add(v);
+            //storec.sync();            
+        }
+        w.hide();
     }
 });
