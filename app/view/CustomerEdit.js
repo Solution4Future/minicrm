@@ -5,53 +5,61 @@ Ext.define("minicrm.view.CustomerEdit", {
         'Ext.TitleBar', 
     ],
     config: {
+        fullscreen: true,
         modal: true,
         hideOnMaskTap: true,
         centered: true,
-        width: '80%',
-        heigth: '300',
+        minWidth: '80%',
+        minHeight: '50%',
         
         layout:  {
-            type: 'fit',
+            type: 'card',
             align: 'center',
-            //pack: 'center'                    
+            pack: 'center'                    
         },
         
         items: [
-            //{
-            //    docked: 'top',
-            //    xtype: 'titlebar',
-            //    title: 'Customer',
-            //    layout:  {
-            //        //align: 'center',
-            //        //pack: 'center'
-            //    },
-            //    items: [
-            //        {
-            //            xtype: 'button',
-            //            align: 'left',
-            //            text: 'Back',
-            //            ui: 'back',
-            //            id: 'customer-edit-back'
-            //        },
-            //    ]
-            //}, //end toolbar
             {
-                xtype: 'textfield',
-                name: 'name',
-                label: 'Name',
-                autoCapitalize: true,
-                required: true,
-                clearIcon: true
-            },
+                docked: 'top',
+                xtype: 'titlebar',
+                title: 'Customer',
+                layout:  {
+                    //align: 'center',
+                    //pack: 'center'
+                },
+                items: [
+                    {
+                        xtype: 'button',
+                        align: 'right',
+                        text: 'Save',
+                        ui: 'action',
+                        id: 'customer-edit-ok'
+                    },
+                ]
+            }, //end toolbar
             {
-                xtype: 'textfield',
-                name: 'address',
-                label: 'Address',
-                required: true,
-                clearIcon: true
-            }                
-
+                xtype: 'fieldset',
+                //title: 'Customer',
+                items: [
+                    {
+                        xtype: 'textfield',
+                        name: 'name',
+                        label: 'Name',
+                        autoCapitalize: true,
+                        required: true,
+                        clearIcon: true,
+                        placeHolder: 'enter name'
+                    },
+                    {
+                        xtype: 'textfield',
+                        name: 'address',
+                        label: 'Address',
+                        required: true,
+                        clearIcon: true,
+                        placeHolder: 'enter address'
+                    }                                    
+                ]
+            }
         ],
         record: null,
         store: null

@@ -63,7 +63,7 @@ Ext.define("minicrm.view.Main", {
                         ui: 'round',
                         //fullscreen: true,
                         emptyText: 'no customer to show',
-                        width: Ext.os.deviceType == 'Phone' ? null : '50%',
+                        width: Ext.os.deviceType == 'Phone' ? null : '85%',
                         //height: '30%',
                         store: 'Customers',
                         itemTpl: '{name}',

@@ -64,6 +64,14 @@ Ext.define('minicrm.controller.Application', {
     },
     
     onCustomerEdit: function() {
+        if (!this.customerOverlay) {
+            console.log('creating customer overlay');
+            this.customerOverlay = Ext.create('minicrm.view.CustomerEdit');
+            Ext.Viewport.add(this.customerOverlay);
+            
+        }
+        //this.customerOverlay.setRecord(record);
+        this.customerOverlay.show();
         
     },
     

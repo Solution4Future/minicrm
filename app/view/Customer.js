@@ -52,9 +52,11 @@ Ext.define("minicrm.view.Customer", {
                 id: 'customer-info-panel',
                 //flex: 1,
                 margin: 15,
-                tpl: ['<table><tr><td><Name</td><td><b>{name}</b></td></tr>',
-                      '<tr><td>Address</td><td>{address}</td></tr>',
-                      '<tr><td>Phone</td><td>{phone}</td></tr></table>'
+                tpl: ['<table>',
+                      '<tr><td><Name  </td><td><b>{name}</b></td></tr>',
+                      '<tr><td>Address</td><td>{address}    </td></tr>',
+                      '<tr><td>Phone  </td><td>{phone}      </td></tr>',
+                      '</table>'
                 ].join('')
             },
             {
