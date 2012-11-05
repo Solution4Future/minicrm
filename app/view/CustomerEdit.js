@@ -70,7 +70,8 @@ Ext.define("minicrm.view.CustomerEdit", {
     
     updateRecord: function(rec) {
         if (rec) {
-            this.setValues(rec.data);
+            this.setRecord(rec);
+            //this.setValues(rec.data);
         }
     }
 
